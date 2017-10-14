@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="utf-8"?>
+<wsdl:definitions xmlns:wsap="http://schemas.xmlsoap.org/ws/2004/08/addressing/policy" xmlns:wsa10="http://www.w3.org/2005/08/addressing" xmlns:tns="http://tempuri.org/" xmlns:msc="http://schemas.microsoft.com/ws/2005/12/wsdl/contract" xmlns:soapenc="http://schemas.xmlsoap.org/soap/encoding/" xmlns:wsx="http://schemas.xmlsoap.org/ws/2004/09/mex" xmlns:wsp="http://schemas.xmlsoap.org/ws/2004/09/policy" xmlns:wsam="http://www.w3.org/2007/05/addressing/metadata" xmlns:wsa="http://schemas.xmlsoap.org/ws/2004/08/addressing" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:wsu="http://docs.oasis-open.org/wss/2004/01/oasis-200401-wss-wssecurity-utility-1.0.xsd" xmlns:xsd="http://www.w3.org/2001/XMLSchema" name="FlightStatsIntegration" targetNamespace="http://tempuri.org/" xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/">
+  <wsp:Policy wsu:Id="BasicHttpsBinding_IFlightStatsIntegration_policy">
+    <wsp:ExactlyOne>
+      <wsp:All>
+        <sp:TransportBinding xmlns:sp="http://schemas.xmlsoap.org/ws/2005/07/securitypolicy">
+          <wsp:Policy>
+            <sp:TransportToken>
+              <wsp:Policy>
+                <sp:HttpsToken RequireClientCertificate="false" />
+              </wsp:Policy>
+            </sp:TransportToken>
+            <sp:AlgorithmSuite>
+              <wsp:Policy>
+                <sp:Basic256 />
+              </wsp:Policy>
+            </sp:AlgorithmSuite>
+            <sp:Layout>
+              <wsp:Policy>
+                <sp:Strict />
+              </wsp:Policy>
+            </sp:Layout>
+          </wsp:Policy>
+        </sp:TransportBinding>
+      </wsp:All>
+    </wsp:ExactlyOne>
+  </wsp:Policy>
+  <wsdl:types>
+    <xs:schema elementFormDefault="qualified" targetNamespace="http://tempuri.org/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:import namespace="http://schemas.datacontract.org/2004/07/Integracao_flightstats.Models" />
+      <xs:element name="GetFlightData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="airport" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="year" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="month" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="day" nillable="true" type="xs:string" />
+            <xs:element minOccurs="0" name="hour" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetFlightDataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q1="http://schemas.datacontract.org/2004/07/Integracao_flightstats.Models" minOccurs="0" name="GetFlightDataResult" nillable="true" type="q1:FlightData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAirlinesData">
+        <xs:complexType>
+          <xs:sequence />
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAirlinesDataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q2="http://schemas.datacontract.org/2004/07/Integracao_flightstats.Models" minOccurs="0" name="GetAirlinesDataResult" nillable="true" type="q2:AirlineData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAirportsData">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element minOccurs="0" name="country" nillable="true" type="xs:string" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+      <xs:element name="GetAirportsDataResponse">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element xmlns:q3="http://schemas.datacontract.org/2004/07/Integracao_flightstats.Models" minOccurs="0" name="GetAirportsDataResult" nillable="true" type="q3:AirportData" />
+          </xs:sequence>
+        </xs:complexType>
+      </xs:element>
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.microsoft.com/2003/10/Serialization/" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://schemas.microsoft.com/2003/10/Serialization/" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:element name="anyType" nillable="true" type="xs:anyType" />
+      <xs:element name="anyURI" nillable="true" type="xs:anyURI" />
+      <xs:element name="base64Binary" nillable="true" type="xs:base64Binary" />
+      <xs:element name="boolean" nillable="true" type="xs:boolean" />
+      <xs:element name="byte" nillable="true" type="xs:byte" />
+      <xs:element name="dateTime" nillable="true" type="xs:dateTime" />
+      <xs:element name="decimal" nillable="true" type="xs:decimal" />
+      <xs:element name="double" nillable="true" type="xs:double" />
+      <xs:element name="float" nillable="true" type="xs:float" />
+      <xs:element name="int" nillable="true" type="xs:int" />
+      <xs:element name="long" nillable="true" type="xs:long" />
+      <xs:element name="QName" nillable="true" type="xs:QName" />
+      <xs:element name="short" nillable="true" type="xs:short" />
+      <xs:element name="string" nillable="true" type="xs:string" />
+      <xs:element name="unsignedByte" nillable="true" type="xs:unsignedByte" />
+      <xs:element name="unsignedInt" nillable="true" type="xs:unsignedInt" />
+      <xs:element name="unsignedLong" nillable="true" type="xs:unsignedLong" />
+      <xs:element name="unsignedShort" nillable="true" type="xs:unsignedShort" />
+      <xs:element name="char" nillable="true" type="tns:char" />
+      <xs:simpleType name="char">
+        <xs:restriction base="xs:int" />
+      </xs:simpleType>
+      <xs:element name="duration" nillable="true" type="tns:duration" />
+      <xs:simpleType name="duration">
+        <xs:restriction base="xs:duration">
+          <xs:pattern value="\-?P(\d*D)?(T(\d*H)?(\d*M)?(\d*(\.\d*)?S)?)?" />
+          <xs:minInclusive value="-P10675199DT2H48M5.4775808S" />
+          <xs:maxInclusive value="P10675199DT2H48M5.4775807S" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:element name="guid" nillable="true" type="tns:guid" />
+      <xs:simpleType name="guid">
+        <xs:restriction base="xs:string">
+          <xs:pattern value="[\da-fA-F]{8}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{4}-[\da-fA-F]{12}" />
+        </xs:restriction>
+      </xs:simpleType>
+      <xs:attribute name="FactoryType" type="xs:QName" />
+      <xs:attribute name="Id" type="xs:ID" />
+      <xs:attribute name="Ref" type="xs:IDREF" />
+    </xs:schema>
+    <xs:schema xmlns:tns="http://schemas.datacontract.org/2004/07/Integracao_flightstats.Models" elementFormDefault="qualified" targetNamespace="http://schemas.datacontract.org/2004/07/Integracao_flightstats.Models" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+      <xs:complexType name="FlightData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Arrival" nillable="true" type="tns:Arrival" />
+          <xs:element minOccurs="0" name="Departure" nillable="true" type="tns:Departure" />
+          <xs:element minOccurs="0" name="HasError" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FlightData" nillable="true" type="tns:FlightData" />
+      <xs:complexType name="Arrival">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Appendix" nillable="true" type="tns:Appendix" />
+          <xs:element minOccurs="0" name="flightStatuses" nillable="true" type="tns:ArrayOfFlightStatus" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Arrival" nillable="true" type="tns:Arrival" />
+      <xs:complexType name="Appendix">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="airlines" nillable="true" type="tns:ArrayOfAirline" />
+          <xs:element minOccurs="0" name="airports" nillable="true" type="tns:ArrayOfAirport" />
+          <xs:element minOccurs="0" name="equipments" nillable="true" type="tns:ArrayOfEquipment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Appendix" nillable="true" type="tns:Appendix" />
+      <xs:complexType name="ArrayOfAirline">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Airline" nillable="true" type="tns:Airline" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfAirline" nillable="true" type="tns:ArrayOfAirline" />
+      <xs:complexType name="Airline">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="active" type="xs:boolean" />
+          <xs:element minOccurs="0" name="fs" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="iata" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="icao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="phoneNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Airline" nillable="true" type="tns:Airline" />
+      <xs:complexType name="ArrayOfAirport">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Airport" nillable="true" type="tns:Airport" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfAirport" nillable="true" type="tns:ArrayOfAirport" />
+      <xs:complexType name="Airport">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="active" type="xs:boolean" />
+          <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="cityCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="classification" type="xs:int" />
+          <xs:element minOccurs="0" name="countryCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="countryName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="delayIndexUrl" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="elevationFeet" type="xs:int" />
+          <xs:element minOccurs="0" name="fs" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="iata" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="icao" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="latitude" type="xs:double" />
+          <xs:element minOccurs="0" name="localTime" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="longitude" type="xs:double" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="regionName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="stateCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="timeZoneRegionName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="utcOffsetHours" type="xs:double" />
+          <xs:element minOccurs="0" name="weatherUrl" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Airport" nillable="true" type="tns:Airport" />
+      <xs:complexType name="ArrayOfEquipment">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Equipment" nillable="true" type="tns:Equipment" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfEquipment" nillable="true" type="tns:ArrayOfEquipment" />
+      <xs:complexType name="Equipment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="iata" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="jet" type="xs:boolean" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="regional" type="xs:boolean" />
+          <xs:element minOccurs="0" name="turboProp" type="xs:boolean" />
+          <xs:element minOccurs="0" name="widebody" type="xs:boolean" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Equipment" nillable="true" type="tns:Equipment" />
+      <xs:complexType name="ArrayOfFlightStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="FlightStatus" nillable="true" type="tns:FlightStatus" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfFlightStatus" nillable="true" type="tns:ArrayOfFlightStatus" />
+      <xs:complexType name="FlightStatus">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="airportResources" nillable="true" type="tns:Airportresources" />
+          <xs:element minOccurs="0" name="arrivalAirportFsCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="arrivalDate" nillable="true" type="tns:Arrivaldate" />
+          <xs:element minOccurs="0" name="carrierFsCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="codeshares" nillable="true" type="tns:ArrayOfCodeshare" />
+          <xs:element minOccurs="0" name="delays" nillable="true" type="tns:Delays" />
+          <xs:element minOccurs="0" name="departureAirportFsCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="departureDate" nillable="true" type="tns:Departuredate" />
+          <xs:element minOccurs="0" name="flightDurations" nillable="true" type="tns:Flightdurations" />
+          <xs:element minOccurs="0" name="flightEquipment" nillable="true" type="tns:Flightequipment" />
+          <xs:element minOccurs="0" name="flightId" type="xs:int" />
+          <xs:element minOccurs="0" name="flightNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="operationalTimes" nillable="true" type="tns:Operationaltimes" />
+          <xs:element minOccurs="0" name="schedule" nillable="true" type="tns:Schedule" />
+          <xs:element minOccurs="0" name="status" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="FlightStatus" nillable="true" type="tns:FlightStatus" />
+      <xs:complexType name="Airportresources">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arrivalGate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="arrivalTerminal" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="departureGate" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="departureTerminal" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Airportresources" nillable="true" type="tns:Airportresources" />
+      <xs:complexType name="Arrivaldate">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateLocal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Arrivaldate" nillable="true" type="tns:Arrivaldate" />
+      <xs:complexType name="ArrayOfCodeshare">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="Codeshare" nillable="true" type="tns:Codeshare" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfCodeshare" nillable="true" type="tns:ArrayOfCodeshare" />
+      <xs:complexType name="Codeshare">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="flightNumber" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="fsCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="relationship" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Codeshare" nillable="true" type="tns:Codeshare" />
+      <xs:complexType name="Delays">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="arrivalGateDelayMinutes" type="xs:int" />
+          <xs:element minOccurs="0" name="departureGateDelayMinutes" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Delays" nillable="true" type="tns:Delays" />
+      <xs:complexType name="Departuredate">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateLocal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Departuredate" nillable="true" type="tns:Departuredate" />
+      <xs:complexType name="Flightdurations">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="airMinutes" type="xs:int" />
+          <xs:element minOccurs="0" name="blockMinutes" type="xs:int" />
+          <xs:element minOccurs="0" name="scheduledBlockMinutes" type="xs:int" />
+          <xs:element minOccurs="0" name="taxiInMinutes" type="xs:int" />
+          <xs:element minOccurs="0" name="taxiOutMinutes" type="xs:int" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Flightdurations" nillable="true" type="tns:Flightdurations" />
+      <xs:complexType name="Flightequipment">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="actualEquipmentIataCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="scheduledEquipmentIataCode" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="tailNumber" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Flightequipment" nillable="true" type="tns:Flightequipment" />
+      <xs:complexType name="Operationaltimes">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="actualGateArrival" nillable="true" type="tns:Actualgatearrival" />
+          <xs:element minOccurs="0" name="actualGateDeparture" nillable="true" type="tns:Actualgatedeparture" />
+          <xs:element minOccurs="0" name="actualRunwayArrival" nillable="true" type="tns:Actualrunwayarrival" />
+          <xs:element minOccurs="0" name="actualRunwayDeparture" nillable="true" type="tns:Actualrunwaydeparture" />
+          <xs:element minOccurs="0" name="estimatedGateArrival" nillable="true" type="tns:Estimatedgatearrival" />
+          <xs:element minOccurs="0" name="estimatedGateDeparture" nillable="true" type="tns:Estimatedgatedeparture" />
+          <xs:element minOccurs="0" name="estimatedRunwayArrival" nillable="true" type="tns:Estimatedrunwayarrival" />
+          <xs:element minOccurs="0" name="estimatedRunwayDeparture" nillable="true" type="tns:Estimatedrunwaydeparture" />
+          <xs:element minOccurs="0" name="publishedArrival" nillable="true" type="tns:Publishedarrival" />
+          <xs:element minOccurs="0" name="publishedDeparture" nillable="true" type="tns:Publisheddeparture" />
+          <xs:element minOccurs="0" name="scheduledGateArrival" nillable="true" type="tns:Scheduledgatearrival" />
+          <xs:element minOccurs="0" name="scheduledGateDeparture" nillable="true" type="tns:Scheduledgatedeparture" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Operationaltimes" nillable="true" type="tns:Operationaltimes" />
+      <xs:complexType name="Actualgatearrival">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateLocal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Actualgatearrival" nillable="true" type="tns:Actualgatearrival" />
+      <xs:complexType name="Actualgatedeparture">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateLocal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Actualgatedeparture" nillable="true" type="tns:Actualgatedeparture" />
+      <xs:complexType name="Actualrunwayarrival">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateLocal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Actualrunwayarrival" nillable="true" type="tns:Actualrunwayarrival" />
+      <xs:complexType name="Actualrunwaydeparture">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateLocal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Actualrunwaydeparture" nillable="true" type="tns:Actualrunwaydeparture" />
+      <xs:complexType name="Estimatedgatearrival">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateLocal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Estimatedgatearrival" nillable="true" type="tns:Estimatedgatearrival" />
+      <xs:complexType name="Estimatedgatedeparture">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateLocal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Estimatedgatedeparture" nillable="true" type="tns:Estimatedgatedeparture" />
+      <xs:complexType name="Estimatedrunwayarrival">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateLocal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Estimatedrunwayarrival" nillable="true" type="tns:Estimatedrunwayarrival" />
+      <xs:complexType name="Estimatedrunwaydeparture">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateLocal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Estimatedrunwaydeparture" nillable="true" type="tns:Estimatedrunwaydeparture" />
+      <xs:complexType name="Publishedarrival">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateLocal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Publishedarrival" nillable="true" type="tns:Publishedarrival" />
+      <xs:complexType name="Publisheddeparture">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateLocal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Publisheddeparture" nillable="true" type="tns:Publisheddeparture" />
+      <xs:complexType name="Scheduledgatearrival">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateLocal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Scheduledgatearrival" nillable="true" type="tns:Scheduledgatearrival" />
+      <xs:complexType name="Scheduledgatedeparture">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="dateLocal" type="xs:dateTime" />
+          <xs:element minOccurs="0" name="dateUtc" type="xs:dateTime" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Scheduledgatedeparture" nillable="true" type="tns:Scheduledgatedeparture" />
+      <xs:complexType name="Schedule">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="flightType" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="restrictions" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="serviceClasses" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Schedule" nillable="true" type="tns:Schedule" />
+      <xs:complexType name="Departure">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Appendix" nillable="true" type="tns:Appendix" />
+          <xs:element minOccurs="0" name="flightStatuses" nillable="true" type="tns:ArrayOfFlightStatus" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="Departure" nillable="true" type="tns:Departure" />
+      <xs:complexType name="AirlineData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Airlines" nillable="true" type="tns:ArrayOfAirlineCustom" />
+          <xs:element minOccurs="0" name="HasError" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirlineData" nillable="true" type="tns:AirlineData" />
+      <xs:complexType name="ArrayOfAirlineCustom">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="AirlineCustom" nillable="true" type="tns:AirlineCustom" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfAirlineCustom" nillable="true" type="tns:ArrayOfAirlineCustom" />
+      <xs:complexType name="AirlineCustom">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="iata" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirlineCustom" nillable="true" type="tns:AirlineCustom" />
+      <xs:complexType name="AirportData">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="Airports" nillable="true" type="tns:ArrayOfAirportCustom" />
+          <xs:element minOccurs="0" name="HasError" type="xs:boolean" />
+          <xs:element minOccurs="0" name="Message" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirportData" nillable="true" type="tns:AirportData" />
+      <xs:complexType name="ArrayOfAirportCustom">
+        <xs:sequence>
+          <xs:element minOccurs="0" maxOccurs="unbounded" name="AirportCustom" nillable="true" type="tns:AirportCustom" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="ArrayOfAirportCustom" nillable="true" type="tns:ArrayOfAirportCustom" />
+      <xs:complexType name="AirportCustom">
+        <xs:sequence>
+          <xs:element minOccurs="0" name="city" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="countryName" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="iata" nillable="true" type="xs:string" />
+          <xs:element minOccurs="0" name="latitude" type="xs:double" />
+          <xs:element minOccurs="0" name="longitude" type="xs:double" />
+          <xs:element minOccurs="0" name="name" nillable="true" type="xs:string" />
+        </xs:sequence>
+      </xs:complexType>
+      <xs:element name="AirportCustom" nillable="true" type="tns:AirportCustom" />
+    </xs:schema>
+  </wsdl:types>
+  <wsdl:message name="IFlightStatsIntegration_GetFlightData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightData" />
+  </wsdl:message>
+  <wsdl:message name="IFlightStatsIntegration_GetFlightData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetFlightDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightStatsIntegration_GetAirlinesData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAirlinesData" />
+  </wsdl:message>
+  <wsdl:message name="IFlightStatsIntegration_GetAirlinesData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAirlinesDataResponse" />
+  </wsdl:message>
+  <wsdl:message name="IFlightStatsIntegration_GetAirportsData_InputMessage">
+    <wsdl:part name="parameters" element="tns:GetAirportsData" />
+  </wsdl:message>
+  <wsdl:message name="IFlightStatsIntegration_GetAirportsData_OutputMessage">
+    <wsdl:part name="parameters" element="tns:GetAirportsDataResponse" />
+  </wsdl:message>
+  <wsdl:portType name="IFlightStatsIntegration">
+    <wsdl:operation name="GetFlightData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightStatsIntegration/GetFlightData" message="tns:IFlightStatsIntegration_GetFlightData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightStatsIntegration/GetFlightDataResponse" message="tns:IFlightStatsIntegration_GetFlightData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAirlinesData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightStatsIntegration/GetAirlinesData" message="tns:IFlightStatsIntegration_GetAirlinesData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightStatsIntegration/GetAirlinesDataResponse" message="tns:IFlightStatsIntegration_GetAirlinesData_OutputMessage" />
+    </wsdl:operation>
+    <wsdl:operation name="GetAirportsData">
+      <wsdl:input wsaw:Action="http://tempuri.org/IFlightStatsIntegration/GetAirportsData" message="tns:IFlightStatsIntegration_GetAirportsData_InputMessage" />
+      <wsdl:output wsaw:Action="http://tempuri.org/IFlightStatsIntegration/GetAirportsDataResponse" message="tns:IFlightStatsIntegration_GetAirportsData_OutputMessage" />
+    </wsdl:operation>
+  </wsdl:portType>
+  <wsdl:binding name="BasicHttpBinding_IFlightStatsIntegration" type="tns:IFlightStatsIntegration">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFlightData">
+      <soap:operation soapAction="http://tempuri.org/IFlightStatsIntegration/GetFlightData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAirlinesData">
+      <soap:operation soapAction="http://tempuri.org/IFlightStatsIntegration/GetAirlinesData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAirportsData">
+      <soap:operation soapAction="http://tempuri.org/IFlightStatsIntegration/GetAirportsData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:binding name="BasicHttpsBinding_IFlightStatsIntegration" type="tns:IFlightStatsIntegration">
+    <wsp:PolicyReference URI="#BasicHttpsBinding_IFlightStatsIntegration_policy" />
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" />
+    <wsdl:operation name="GetFlightData">
+      <soap:operation soapAction="http://tempuri.org/IFlightStatsIntegration/GetFlightData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAirlinesData">
+      <soap:operation soapAction="http://tempuri.org/IFlightStatsIntegration/GetAirlinesData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+    <wsdl:operation name="GetAirportsData">
+      <soap:operation soapAction="http://tempuri.org/IFlightStatsIntegration/GetAirportsData" style="document" />
+      <wsdl:input>
+        <soap:body use="literal" />
+      </wsdl:input>
+      <wsdl:output>
+        <soap:body use="literal" />
+      </wsdl:output>
+    </wsdl:operation>
+  </wsdl:binding>
+  <wsdl:service name="FlightStatsIntegration">
+    <wsdl:port name="BasicHttpBinding_IFlightStatsIntegration" binding="tns:BasicHttpBinding_IFlightStatsIntegration">
+      <soap:address location="http://testewsflightstats.azurewebsites.net/FlightStatsIntegration.svc" />
+    </wsdl:port>
+    <wsdl:port name="BasicHttpsBinding_IFlightStatsIntegration" binding="tns:BasicHttpsBinding_IFlightStatsIntegration">
+      <soap:address location="https://testewsflightstats.azurewebsites.net/FlightStatsIntegration.svc" />
+    </wsdl:port>
+  </wsdl:service>
+</wsdl:definitions>

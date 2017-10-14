@@ -1,0 +1,11 @@
+D:\ProjetosGustavo\Integracao_flightstats\ConsoleFlightStats\bin\Debug\ConsoleFlightStats.exe.config
+D:\ProjetosGustavo\Integracao_flightstats\ConsoleFlightStats\bin\Debug\ConsoleFlightStats.exe
+D:\ProjetosGustavo\Integracao_flightstats\ConsoleFlightStats\bin\Debug\ConsoleFlightStats.pdb
+D:\ProjetosGustavo\Integracao_flightstats\ConsoleFlightStats\obj\Debug\ConsoleFlightStats.csprojResolveAssemblyReference.cache
+D:\ProjetosGustavo\Integracao_flightstats\ConsoleFlightStats\obj\Debug\ConsoleFlightStats.csproj.CoreCompileInputs.cache
+D:\ProjetosGustavo\Integracao_flightstats\ConsoleFlightStats\obj\Debug\ConsoleFlightStats.exe
+D:\ProjetosGustavo\Integracao_flightstats\ConsoleFlightStats\obj\Debug\ConsoleFlightStats.pdb
+D:\ProjetosGustavo\Integracao_flightstats\ConsoleFlightStats\bin\Debug\ConsoleFlightStats.exe.manifest
+D:\ProjetosGustavo\Integracao_flightstats\ConsoleFlightStats\bin\Debug\ConsoleFlightStats.application
+D:\ProjetosGustavo\Integracao_flightstats\ConsoleFlightStats\obj\Debug\ConsoleFlightStats.exe.manifest
+D:\ProjetosGustavo\Integracao_flightstats\ConsoleFlightStats\obj\Debug\ConsoleFlightStats.application

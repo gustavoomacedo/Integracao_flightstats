@@ -1,0 +1,1 @@
+﻿<%@ ServiceHost Language="C#" Debug="true" Service="Integracao_flightstats.FlightStatsIntegration" CodeBehind="FlightStatsIntegration.svc.cs" %>

@@ -1,0 +1,14 @@
+D:\ProjetosGustavo\Integracao_flightstats\Integracao_flightstats\bin\Integracao_flightstats.dll.config
+D:\ProjetosGustavo\Integracao_flightstats\Integracao_flightstats\bin\Integracao_flightstats.dll
+D:\ProjetosGustavo\Integracao_flightstats\Integracao_flightstats\bin\Integracao_flightstats.pdb
+D:\ProjetosGustavo\Integracao_flightstats\Integracao_flightstats\bin\Newtonsoft.Json.dll
+D:\ProjetosGustavo\Integracao_flightstats\Integracao_flightstats\bin\System.Net.Http.Extensions.dll
+D:\ProjetosGustavo\Integracao_flightstats\Integracao_flightstats\bin\System.Net.Http.Primitives.dll
+D:\ProjetosGustavo\Integracao_flightstats\Integracao_flightstats\bin\Newtonsoft.Json.xml
+D:\ProjetosGustavo\Integracao_flightstats\Integracao_flightstats\bin\System.Net.Http.Extensions.xml
+D:\ProjetosGustavo\Integracao_flightstats\Integracao_flightstats\bin\System.Net.Http.Primitives.xml
+D:\ProjetosGustavo\Integracao_flightstats\Integracao_flightstats\obj\Debug\Integracao_flightstats.csproj.App.config
+D:\ProjetosGustavo\Integracao_flightstats\Integracao_flightstats\obj\Debug\Integracao_flightstats.csproj.CoreCompileInputs.cache
+D:\ProjetosGustavo\Integracao_flightstats\Integracao_flightstats\obj\Debug\Integracao_flightstats.dll
+D:\ProjetosGustavo\Integracao_flightstats\Integracao_flightstats\obj\Debug\Integracao_flightstats.pdb
+D:\ProjetosGustavo\Integracao_flightstats\Integracao_flightstats\obj\Debug\Integracao_flightstats.csprojResolveAssemblyReference.cache
